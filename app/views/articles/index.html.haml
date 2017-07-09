@@ -1,0 +1,21 @@
+.container
+  .page-header
+    %h2 Listing Articles
+  %table{:style => "width:85%"}
+    %tr
+      %th Title
+      %th Text
+      %th User
+      %th{:colspan => "3"}
+    - @articles.each do |article|
+      %tr
+        %td= article.title
+        %td= article.text
+        %td= article.user.email
+        %td= link_to 'Show', article_path(article)
+        %td
+          - if user_signed_in? && current_user.id == article.user_id
+        %td= link_to 'Edit', edit_article_path(article)
+        %td= link_to 'Destroy', article_path(article), |
+            method: :delete,                          |
+            data: { confirm: 'Are you sure?' }        |

@@ -1,0 +1,12 @@
+.container
+  = simple_form_for([@article, @article.comments.build]) do |f|
+    %p
+      = f.input :commenter
+      %br/
+      
+    %p
+      = f.input :body
+      %br/
+      
+    %p
+      = f.button:submit

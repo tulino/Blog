@@ -1,0 +1,13 @@
+.container
+  %h4
+    Commenter:
+    %h4
+      = comment.commenter
+  %p
+  %h4 Comment:
+  = comment.body
+  %p
+    - if user_signed_in? && current_user.id == @article.user_id && current_user.id == comment.user_id
+      = link_to 'Destroy Comment', [comment.article, comment], |
+        method: :delete,                                       |
+        data: { confirm: 'Are you sure?' }                     |
